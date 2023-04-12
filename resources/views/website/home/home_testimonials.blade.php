@@ -41,7 +41,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="swiper-slide">
                                     <div class="testimonial-card style-3">
                                         <div class="text">
