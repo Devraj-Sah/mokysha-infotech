@@ -2,5 +2,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/cesifnepal/public_html/
+    - export DEPLOYPATH=/home3/mokshg5t/public_html/
     - /bin/cp -r * $DEPLOYPATH

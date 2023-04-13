@@ -242,7 +242,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">
+                        <a class="nav-link" style="font-size:13px" href="/">
                             Homes
                         </a>                      
                     </li>
@@ -261,7 +261,7 @@
                     </li> -->
                     @foreach ($menus as $menu)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('category', $menu->nav_name) }}">
+                        <a class="nav-link" style="font-size:13px" href="{{ route('category', $menu->nav_name) }}">
                             {{ $menu->caption }}
                         </a>
                     </li>
