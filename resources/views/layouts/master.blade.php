@@ -114,124 +114,43 @@
 </head>
 
 <body>
-    {{-- <header>        
-        <div class="main-nav">
-                <div class="container">
-                    <div class="col-md-3 col-sm-3 text-center logo">
-                        <a href="/">
-                            <img class="img-responsive" src="{{ '/uploads/icons/' . $global_setting->site_logo }}"
-                                alt="logo">
-                        </a>
-                    </div>
-                    <div class="col-md-9 col-sm-9">
-                        <nav class="navbar navbar-default">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-                            <div id="navbar" class="navbar-collapse collapse no-margin no-padding">
-
-                                <ul class="nav navbar-nav">
-                                    <li @if (!isset($slug_detail))  @endif><a href="/">Home</a></li>
-
-                                    @foreach ($menus as $menu)
-                                        @php $submenus = $menu->childs; @endphp
-
-
-                                        
-
-                                        <li class="nav-item dropdown" @if (isset($slug_detail) && $slug_detail->nav_name == $menu->nav_name)  @endif><a
-                                                class="dropdown-toggle"
-                                                @if ($menu->nav_name == 'career') @else data-toggle="dropdown" @endif
-                                                role="button" aria-haspopup="true" aria-expanded="false"
-                                                @if ($submenus->count() > 0) href="{{ route('category', $menu->nav_name) }}" @else href="  
-                                        {{ route('category', $menu->nav_name) }}" @endif>{{ $menu->caption }}
-                                                @if ($menu->nav_name == 'career')
-                                                @else
-                                                    <span class="caret"></span>
-                                                @endif
-
-
-                                            </a>
-                                            
-
-                                            @if ($submenus->count() > 0)
-                                                <ul class="dropdown-menu">
-                                                    @foreach ($submenus as $sub)
-                                                        <li>
-                                                            <a
-                                                                href="{{ route('subcategory', [$menu->nav_name, $sub->nav_name]) }}">{{ $sub->caption }}</a>
-                                                        </li>
-                                                    @endforeach
-
-
-                                                    @if ($menu->id == 2669)
-                                                        @foreach ($father as $father_item)
-                                                            <li>
-                                                                <a href="{{ route('all-data', $father_item->nav_name) }}">{{ $father_item->caption }}
-
-                                                                </a>
-                                                            </li>
-                                                        @endforeach
-                                                    @else
-                                                    @endif
-                                                </ul>
-                                            @endif
-                                        </li>
-                                    @endforeach
-                                    <li><a href="/contact">Contact</a></li>
-                                    <li>
-                                        <div class="main">  
-                                            <!-- Actual search box -->
-                                            <div class="form-group has-feedback has-search">
-                                                <form action="{{ route('search') }}" method="POST">
-                                                    @csrf
-                                                    <span class="fa fa-search form-control-feedback"></span>
-                                                    <input name="search_query" type="text" class="form-control" placeholder="Search">
-                                                    <input type="submit" hidden>
-                                                </form>
-                                            </div>
-                                            
-                                        </div>
-                                        <script type="text/javascript">
-                                            // Using jQuery.
-                                            
-                                            $(function() {
-                                                $('form').each(function() {
-                                                    $(this).find('input').keypress(function(e) {
-                                                        // Enter pressed?
-                                                        if(e.which == 10 || e.which == 13) {
-                                                            this.form.submit();
-                                                        }
-                                                    });
-                                            
-                                                    $(this).find('input[type=submit]').hide();
-                                                });
-                                            });
-                                            </script>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--/.nav-collapse -->
-                        </nav>
-
-
-
-
-
-                    </div>
-                </div>
-        </div>
-    </header> --}}
-    
+    @if(isset($which))
     <nav class="navbar navbar-expand-lg navbar-dark style-3 position-absolute w-100" style="padding: 10px;">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
+                <img src="{{ '/uploads/icons/' . $global_setting->site_logo }}" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" style="font-size:13px" href="/">
+                            Homes
+                        </a>                      
+                    </li>
+                   
+                    @foreach ($menus as $menu)
+                    <li class="nav-item">
+                        <a class="nav-link" style="font-size:13px" href="{{ route('category', $menu->nav_name) }}">
+                            {{ $menu->caption }}
+                        </a>
+                    </li>
+                    @endforeach                 
+                    
+                </ul>                
+            </div>
+        </div>
+    </nav>
+    @else
+    <!-- ====== start navbar ====== -->
+    <nav class="navbar navbar-expand-lg navbar-dark style-3" style="background-color: #1f2163; padding: 10px;">
+        <div class="container">
+            <a class="navbar-brand" href="/">
                 <img src="{{ '/uploads/icons/' . $global_setting->site_logo }}" alt="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -242,74 +161,26 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav m-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" style="font-size:13px" href="/">
+                        <a class="nav-link"  style="font-size:13px" href="/">
                             Homes
                         </a>                      
                     </li>
-                    <!-- <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            pages
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                            <li><a class="dropdown-item" href="page-about-5.html">about</a></li>
-                            <li><a class="dropdown-item" href="page-product-5.html">product</a></li>
-                            <li><a class="dropdown-item" href="page-services-5.html">services</a></li>
-                            <li><a class="dropdown-item" href="page-shop-5.html">shop</a></li>
-                            <li><a class="dropdown-item" href="page-single-project-5.html">single project</a></li>
-                        </ul>
-                    </li> -->
+                   
                     @foreach ($menus as $menu)
                     <li class="nav-item">
                         <a class="nav-link" style="font-size:13px" href="{{ route('category', $menu->nav_name) }}">
                             {{ $menu->caption }}
                         </a>
                     </li>
-                    @endforeach
-
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" href="page-services.html">
-                            Services
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="page-blog.html">
-                            Blogs
-                            <!-- <small class="fs-10px icon-20 rounded-pill bg-blue5 text-white fw-bold px-3 ms-2 d-inline-flex justify-content-center align-items-center">
-                                3
-                            </small> -->
-                        </a>
-                    </li>
-      
-                    <li class="nav-item">
-                        <a class="nav-link" href="page-portfolio-5.html">
-                            Careers
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="page-contact-5.html">
-                            contact us
-                        </a>
-                    </li> --}}
+                    @endforeach   
                     
                 </ul>
-                <!-- <div class="nav-side">
-                    <div class="d-flex align-items-center">
-                        <span class="nav-item">
-                            <a class="nav-link" href="page-contact-5.html">
-                                <i class="bi bi-person fs-5 me-2"></i>
-                                sign in
-                            </a>
-                        </span>
-                        <a href="page-contact-5.html" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold">
-                            <span>Start Free Trial <i class="bi bi-arrow-right ms-1"></i> </span>
-                        </a>
-                    </div>
-                </div> -->
+
             </div>
         </div>
     </nav>
-
+    <!-- ====== end navbar ====== -->
+    @endif
 
 
     @yield('content')

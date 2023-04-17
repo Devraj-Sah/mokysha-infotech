@@ -1,31 +1,33 @@
+
         <!-- ====== start testimonials ====== -->
         <section class="testimonials style-3" data-scroll-index="1">
             <div class="container">
                 <div class="content section-padding">
                     <div class="section-head style-3">
-                        <h3>Loved By Thousand <span>Clients</span></h3>
+                        <h3> Loved By Thousand <span>Clients</span></h3>
                     </div>
                     <div class="testimonial-slider style-3">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="testimonial-card style-3">
-                                        <div class="text">
-                                            “We encountered a problem with processing big data and after only 1 week,
-                                            all fixed, professional, fast & affordable price!”
-                                        </div>
-                                        <div class="user-img mt-30 d-flex align-items-center">
-                                            <div class="img icon-40 img-cover rounded-circle overflow-hidden me-3">
-                                                <img src="/website/assets/img/testimonials/testi.jpeg" alt="">
+                                @foreach ($testimonial as $item)
+                                    <div class="swiper-slide">
+                                        <div class="testimonial-card style-3">
+                                            <div class="text">
+                                                {!! $item->long_content !!}
                                             </div>
-                                            <div class="inf">
-                                                <p class="fw-bold">Robert Downey Jr</p>
-                                                <small class="text-muted">Technical Leader at Airbnb</small>
+                                            <div class="user-img mt-30 d-flex align-items-center">
+                                                <div class="img icon-40 img-cover rounded-circle overflow-hidden me-3">
+                                                    <img src="{{ $item->banner_image }}" alt="">
+                                                </div>
+                                                <div class="inf">
+                                                    <p class="fw-bold">{{$item->caption}}</p>
+                                                    <small class="text-muted">{!! $item->short_content !!}</small>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
+                                @endforeach
+                                {{-- <div class="swiper-slide">
                                     <div class="testimonial-card style-3">
                                         <div class="text">
                                             “Mokysha is 1st our choice for cloud service methods. Extremely security and
@@ -58,7 +60,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <div class="swiper-button-next"></div>

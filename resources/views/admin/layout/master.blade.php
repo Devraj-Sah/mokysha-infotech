@@ -13,7 +13,7 @@
                     <i class="fa fa-dashboard">&nbsp;</i>
                     @for($i = 1; $i <= count(Request::segments()); $i++)
                         <li>
-                          <a href="">{{Request::segment($i)}}</a>                           
+                          <a href="{{ url(implode('/', array_slice(Request::segments(), 0, $i))) }}">{{Request::segment($i)}}</a>                           
                         </li>
                      @endfor
             </ol>

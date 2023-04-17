@@ -740,12 +740,12 @@
         filebrowserFlashUploadUrl: '{{ asset('assets/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}',
 
     });
+    // CKEDITOR.replace('long_content', {
+    //             filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
+    //             filebrowserUploadMethod: 'form'
+    //         });
 </script>
 
 
-// CKEDITOR.replace('long_content', {
-//             filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
-//             filebrowserUploadMethod: 'form'
-//         });
 
 @endsection
