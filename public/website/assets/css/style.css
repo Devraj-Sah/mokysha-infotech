@@ -93,6 +93,9 @@ TABLE OF CONTENTS:-
   --color-gray2:#f0eff5;
   --color-main-grad: linear-gradient(to right, #0c3df4 0%, #02b5ff 100%); }
 
+.inf ul{
+  list-style-type: unset !important ;
+}
 .color-main {
   color: var(--color-main) !important; }
 

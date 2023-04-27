@@ -93,7 +93,7 @@
                                         </td>
 
                                         <td>
-                                            @if($navigation->page_type === 'Group' || strpos($navigation->page_type, 'Menu') !== false)
+                                            @if($navigation->page_type === 'Group' || $navigation->page_type === 'career' || strpos($navigation->page_type, 'Menu') !== false)
                                                 <a href="/admin/navigation-list/{{$nav_category}}/{{$navigation->id}}"
                                                    title="Group">
                                                     <button class="btn btn-primary">Open</button>

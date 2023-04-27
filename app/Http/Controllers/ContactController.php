@@ -48,7 +48,7 @@ class ContactController extends Controller
         mail($email,$subject,$msg,$headers);
         
         if($data){
-            return redirect('/contact-us')->with('success',"Message sent Sucessfully. Thank You!!");
+            return redirect('/contact')->with('success',"Message sent Sucessfully. Thank You!!");
         }
         }
         // return redirect()->back()->with('error',"Feedback Message failed. Try Again Later");
@@ -116,7 +116,7 @@ class ContactController extends Controller
         $contact->save();
         if($contact){
             Session::flash('contact', 'Thanks for submitting'); 
-            return redirect('/');
+            return redirect('/contact');
         }
         else{
             Session::flash('contact_error', 'Sorry form submitted failed'); 

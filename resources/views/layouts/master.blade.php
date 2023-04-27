@@ -97,6 +97,7 @@
     <link rel="stylesheet" href="/website/assets/css/lib/jquery.fancybox.css">
     <link rel="stylesheet" href="/website/assets/css/lib/lity.css">
     <link rel="stylesheet" href="/website/assets/css/lib/swiper.min.css">
+
     <!-- ====== global style ====== -->
     <link rel="stylesheet" href="/website/assets/css/style.css">
     <style>
@@ -182,6 +183,15 @@
     <!-- ====== end navbar ====== -->
     @endif
 
+    <!-- ====== flash message ====== -->
+    {{-- @include('flash-message') --}}
+
+    <!-- ====== End flash message ====== -->
+    {{-- @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div> 
+    @endif--}}
 
     @yield('content')
 
@@ -361,6 +371,7 @@
     <script src="/website/assets/js/lib/jquery.waypoints.min.js"></script>
     <script src="/website/assets/js/lib/jquery.counterup.js"></script>
     <script src="/website/assets/js/lib/pace.js"></script>
+    <script src="/website/assets/js/lib/mixitup.min.js"></script>
     <script src="/website/assets/js/lib/scrollIt.min.js"></script>
     <script src="/website/assets/js/main.js"></script>
 
@@ -381,7 +392,7 @@
 
 
 
-    {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 

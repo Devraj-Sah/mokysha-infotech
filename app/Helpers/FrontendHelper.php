@@ -26,4 +26,9 @@ class FrontendHelper
     {
         return Navigation::where('id', $id)->first();
     }
+
+    public function getblogs()
+    {
+        return  Navigation::where('page_type','blogs')->orderBy('id','desc')->get();
+    }
 }

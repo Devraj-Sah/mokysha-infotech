@@ -43,4 +43,5 @@
         {{ Session::get('message') }}
     </div>
 @endif
+   <!-- ====== Contents flash message ====== -->
 

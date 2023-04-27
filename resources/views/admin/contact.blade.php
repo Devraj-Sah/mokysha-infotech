@@ -11,84 +11,86 @@
 @endpush
 
 @section('content')
-    <section class="mt-120">
+<main class="contact-page style-5">
+    <!-- ====== start contact page ====== -->
+    <section class="contact section-padding pt-50 style-6">
         <div class="container">
-            <h3 class="h-sep theme-color">Contact <span class="text-ultra-bold blue-color">Us</span></h3>
-            <div class="divider_block clearfix">
-                <hr class="divider first">
-                <hr class="divider subheader_arrow">
-                <hr class="divider last">
+            <div class="section-head text-center mb-100 style-5">
+                <h2 class="mb-20"> Get In <span> Touch </span> </h2>
+                <p>We will contact again after receive your request in 24h</p>
+            </div>
+            <div class="text-center mb-100">
+                <h2 class="ltspc-20 text-uppercase fs-1 lh-1 mb-50 mt-30 color-blue5">{{$global_setting->phone_ne}}</h2>
+                <h4 class="fw-normal mb-20 color-000">{{$global_setting->site_email}}</h4>
+                <h4 class="fw-normal mb-10 color-000">{{$global_setting->website_full_address}}</h4>
+            </div>
+            <div class="content">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <form action="{{ route('contactstore') }}" class="form" method="post" enctype='multipart/form-data'>
+                            @csrf
+                            <p class="text-center text-danger fs-12px mb-30">The field is required mark as *</p>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <input type="text" name="name" class="form-control" placeholder="Name"> 
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <input type="text" name="email" class="form-control" placeholder="Email Address *" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <input type="text" name="number" class="form-control"  placeholder="Phone Number *">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group mb-20">
+                                        <input type="text" name="apply_for" class="form-control" placeholder="Your Website (option)">
+                                    </div>
+                                </div>
+                                {{-- <div class="col-lg-12">
+                                    <div class="form-group mb-20">
+                                        <select name="option" class="form-select">
+                                            <option value="how can we help" selected>How can we help you?</option>
+                                            <option value="option 1">option 1</option>
+                                            <option value="option 2">option 2</option>
+                                        </select>
+                                    </div>
+                                </div> --}}
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <textarea rows="10" name="message" class="form-control" placeholder="How can we help you?"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <div class="form-check d-inline-flex mt-30 mb-30">
+                                        <input class="form-check-input me-2 mt-0" type="checkbox" value="" id="flexCheckDefault" required>
+                                        <label class="form-check-label small" for="flexCheckDefault">
+                                            By submitting, i’m agreed to the <a href="#" class="text-decoration-underline">Terms & Conditons</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <input type="submit" value="Send Your Request" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold text-light">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <img src="assets/img/icons/contact_a.png" alt="" class="contact_a">
+                <img src="assets/img/icons/contact_message.png" alt="" class="contact_message">
             </div>
         </div>
     </section>
-    <section class="mt-25 mb-50 contact-us">
-        <div class="container">
-            <p class="fz-16 gray-666">We’d love to hear from you and build out your next dream project. Drop us a line and
-                we’ll get back to you as soon as we can!</p>
-            <div class="row">
-                <div class="col-md-8 col-sm-8">
-                    <!-- <div class="mt-30" id="message"></div> -->
-                    <form action="{{ route('contactstore') }}" method="POST" id="contactform_forms" class="checkout-form"
-                        enctype='multipart/form-data'>
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-6 mt-25"><input id="contact_name" type="text" name="name"
-                                    class="form-control" placeholder="First name"></div>
-                            <div class="col-md-6 mt-25"><input id="contact_email" type="email" name="email"
-                                    class="form-control" placeholder="Email address" required></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mt-25"><input id="contact_phone" type="text" name="number"
-                                    class="form-control" placeholder="Phone"></div>
-                            <div class="col-md-6 mt-25"><input id="contact_website" type="text" name="apply_for"
-                                    class="form-control" placeholder="Your website" ></div>
-                        </div>
-                        <textarea id="contact_message" rows="10" name="message" class="mt-25 form-control" placeholder="Write message"></textarea>
-                        <div class="mt-25 submit">
-                            <input type="submit" class="martel text-extra-bold text-uppercase fz-14" value="Send message" required>
-                        </div>
-                    </form>
+    <!-- ====== end contact page ====== -->
 
-                </div>
-                <div class="col-md-3 col-md-offset-1 col-sm-4 mt-25">
-                    <div class="contact-info clearfix">
-                        <div class="pull-left">
-                            <h5 class="fz-15 theme-color text-bold mb-10">Office Address</h5>
-                            <span class="ubuntu fz-14 gray-777 lh-22"> {{ $global_setting->website_full_address }}
-                                {{ $global_setting->address_ne }}</span>
-                        </div>
-                        <div class="contact-icon pull-right position-r">
-                            <img src="/website/images/office.png" alt="">
-                        </div>
-                        <div class="clearfix"></div>
-                        <hr class="c-border">
-                    </div>
-                    <div class="contact-info clearfix mt-20">
-                        <div class="pull-left">
-                            <h5 class="fz-15 theme-color text-bold mb-10">Phone</h5>
-                            <span class="ubuntu fz-14 gray-777 lh-22">{{ $global_setting->phone }}
-                                <br>{{ $global_setting->phone_ne }}
-                            </span>
-                        </div>
-                        <div class="contact-icon pull-right position-r">
-                            <img src="/website/images/phone.png" alt="">
-                        </div>
-                        <div class="clearfix"></div>
-                        <hr class="c-border">
-                    </div>
-                    <div class="contact-info clearfix mt-20">
-                        <div class="pull-left">
-                            <h5 class="fz-15 theme-color text-bold mb-10">E-mail</h5>
-                            <span class="ubuntu fz-14 gray-777 lh-22">{{ $global_setting->site_email }}</span>
-                        </div>
-                        <div class="contact-icon pull-right position-r">
-                            <img src="/website/images/mail.png" alt="">
-                        </div>
-                        <div class="clearfix"></div>
-                        <hr class="c-border">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- ====== start contact page ====== -->
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2865.7136091568295!2d85.33404483926167!3d27.684531872009487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19956ca7e4b5%3A0xb93699b7a545c7e2!2sShreenagar%2C%20Kathmandu%2044600!5e1!3m2!1sen!2snp!4v1682592680874!5m2!1sen!2snp"height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <!-- ====== start contact page ====== -->
+</main>
 @endsection
