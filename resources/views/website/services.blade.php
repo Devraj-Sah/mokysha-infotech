@@ -1,6 +1,8 @@
 @php
     // use Carbon\Carbon;
     // $helper = new \App\Helpers\FrontendHelper();
+    $carrers = App\Models\Navigation::query()->where('page_type','Carrers Menu')->where('nav_name', 'LIKE', "%career%")->first();
+    $all_services = $carrers->childs()->first()->childs()->get();
 
     $childs  = $slug_detail->childs()->get();
 
@@ -11,7 +13,7 @@
     $easy_to_customizable = $childs->slice(4)->first();
     // $blogs = $helper->getblogs();
 
-    // dd($projects);
+    // dd($all_services);
     
 @endphp
 
@@ -34,14 +36,14 @@
                     <div class="section-head text-center mb-60 style-5">
                         <h2 class="mb-20"> Our  <span> Services </span> </h2>
                         <p>
-                           {{$our_services->short_content}}
+                           {{$our_services->short_content ??  "Add in dashboard"}}
                         </p>
                     </div>
                 </div>
             </div>
             <div class="content">
                 <div class="row">
-                    @foreach ($our_services->navigationitems as $item)
+                    {{-- @foreach ($our_services->navigationitems as $item)
                         
                         <div class="col-lg-3">
                             <a href="#" class="features-card mb-30 style-5">
@@ -54,6 +56,24 @@
                                     </h5>
                                     <p class="text">
                                     {{$item->content}}
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach --}}
+                    @foreach ($all_services as $item)
+                        
+                        <div class="col-lg-3">
+                            <a href="/career" class="features-card mb-30 style-5">
+                                <div class="icon">
+                                    <img src="{{$item->banner_image ?? ""}}" alt="">
+                                </div>
+                                <div class="info">
+                                    <h5 class="card-title">
+                                        {{$item->caption ?? ""}}
+                                    </h5>
+                                    <p class="text">
+                                    {{$item->long_content ?? ""}}
                                     </p>
                                 </div>
                             </a>
@@ -155,7 +175,7 @@
                         <ul class="list-icon">
                            {!! $payment->long_content !!}
                         </ul>
-                        <a href="page-contact-5.html" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold mt-50">
+                        <a href="/contact" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold mt-50">
                             <span> Book A Free Demo </span>
                         </a>
                     </div>

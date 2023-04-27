@@ -52,7 +52,7 @@
                                             </div>
                                             <div class="info">
                                                 <h5>
-                                                    <a href="/{{$services->nav_name}}/{{$service->nav_name}}"> {{$service->caption}} </a> 
+                                                    <a href="/{{$services->nav_name}}/{{$service->nav_name}}">{{$service->caption}} </a> 
                                                 </h5>
                                                 <small class="d-block color-main text-uppercase">{{$services->caption}}</small>
                                                 <div class="text">

@@ -1,15 +1,22 @@
+@php
+$home_aboutus = App\Models\Navigation::query()->where('page_type','Photo Gallery')->where('nav_name', 'LIKE', "%home-mission%")->first();
+$mokysha_technology = App\Models\Navigation::query()->where('page_type','normal')->where('nav_name', 'LIKE', "%mokysha-technology%")->first();
+// dd($home_aboutus)
+@endphp
         <!-- ====== start about us ====== -->
         <section class="about section-padding style-3" data-scroll-index="3">
             <div class="top-content">
                 <div class="img img-left">
                     <img src="/website/assets/img/about/style_3_1.png" alt="">
-                    <div class="info-circle">
-                        <div class="cont">
-                            <h2>1,2k</h2>
-                            <small>Projects done</small>
+                    @foreach ($home_aboutus->navigationitems as $item)
+                        <div class="info-circle">
+                            <div class="cont">
+                                <h2>{{$item->name}}</h2>
+                                <small>{{$item->content}}</small>
+                            </div>
                         </div>
-                    </div>
-                    <div class="info-circle">
+                    @endforeach
+                    {{-- <div class="info-circle">
                         <div class="cont">
                             <h2>165</h2>
                             <small>satisfied clients</small>
@@ -26,7 +33,7 @@
                             <h2>15</h2>
                             <small>years of experience</small>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="container">
                     <div class="row gx-0 justify-content-end">
@@ -36,18 +43,12 @@
                                     <h3>Mokysha’s <span>Mission & Vision</span></h3>
                                 </div>
                                 <h5 class="h5">
-                                    “It is only when they go wrong that machines remind you how powerful they are.”
+                                    {{$home_aboutus->short_content}}
                                 </h5>
                                 <div class="text mb-20">
-                                    Mokysha Co is the partner of choice for many of the world’s leading enterprises, SMEs
-                                    and technology challengers. We help businesses elevate their value through custom
-                                    software development, product design, QA and consultancy services.
+                                   {!! $home_aboutus->long_content !!}
                                 </div>
-                                <div class="text mb-70">
-                                    Mokysha specializes in technological and IT-related services such as product
-                                    engineering, warranty management, building cloud, etc.
-                                </div>
-                                <a href="about-us.html" class="btn rounded-pill bg-blue2 sm-butn text-white">
+                                <a href="/about-us" class="btn rounded-pill bg-blue2 sm-butn text-white">
                                     <span>More About Us</span>
                                 </a>
                             </div>
@@ -64,17 +65,10 @@
                                     <h3>Mokysha’s <span>Technology</span></h3>
                                 </div>
                                 <div class="text mb-30">
-                                    Our team can assist you in transforming your business through latest tech
-                                    capabilities to stay ahead of the curve.
+                                   {{$mokysha_technology->short_content}}
                                 </div>
-                                <ul>
-                                    <li> <i class="bi bi-star-fill me-3"></i> Latest IT Solutions & Integration With
-                                        Blockchain</li>
-                                    <li> <i class="bi bi-star-fill me-3"></i> Over 100+ Payment Gateways Support</li>
-                                    <li> <i class="bi bi-star-fill me-3"></i> AI Machine & Deep Learning</li>
-                                    <li> <i class="bi bi-star-fill me-3"></i> Dedicated Support 24/7</li>
-                                </ul>
-                                <a href="about-us.html" class="btn rounded-pill border-blue2 hover-blue2 mt-60 sm-butn">
+                               {!! $mokysha_technology->long_content !!}
+                                <a href="/about-us" class="btn rounded-pill border-blue2 hover-blue2 mt-60 sm-butn">
                                     <span>How We Works</span>
                                 </a>
                             </div>
@@ -82,7 +76,7 @@
                     </div>
                 </div>
                 <div class="img img-right">
-                    <img src="/website/assets/img/about/style_3_2.png" alt="">
+                    <img src="{{$mokysha_technology->banner_image}}" alt="">
                 </div>
             </div>
         </section>
