@@ -9,10 +9,10 @@
                     </div>
                     <div class="col-lg-5">
                         <div class="bttns text-end">
-                            <a href="page-contact-5.html" class="btn rounded-pill bg-white border-1 border-white text-dark sm-butn me-2">
+                            <a href="{{ route('contact') }}" class="btn rounded-pill bg-white border-1 border-white text-dark sm-butn me-2">
                                 <span>Let’s Chat</span>
                             </a>
-                            <a href="page-contact-5.html" class="btn rounded-pill border-1 border-white text-white sm-butn">
+                            <a href="/about-us" class="btn rounded-pill border-1 border-white text-white sm-butn">
                                 <span>Get Information</span>
                             </a>
                         </div>

@@ -243,25 +243,25 @@
 
         </div>
     </footer> --}}
-    <footer class="style-3">
+    <footer class="style-3  @if(!isset($which))border-top brd-gray @endif">
         <div class="container">
             <div class="row gx-0 justify-content-between">
                 <div class="col-lg-3">
                     <div class="items">
                         <div class="title">
-                            Mokysha - 1st Choice for IT Solutions
+                           {{$global_setting->page_title}}
                         </div>
                         <small class="text">
-                            Over 25 years working in IT services developing software applications and mobile apps for clients all over the world. For your very specific industry, we have highly-tailored IT solutions.
+                           {{$global_setting->page_description}}
                         </small>
                         <div class="socail-icons">
-                            <a href="#" class="icon-35 rounded-circle bg-gray overflow-hidden d-inline-flex align-items-center justify-content-center text-gray me-2">
+                            <a href="{{$global_setting->twitter}}" class="icon-35 rounded-circle bg-gray overflow-hidden d-inline-flex align-items-center justify-content-center text-gray me-2">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                            <a href="#" class="icon-35 rounded-circle bg-gray overflow-hidden d-inline-flex align-items-center justify-content-center text-gray me-2">
+                            <a href="{{$global_setting->facebook}}" class="icon-35 rounded-circle bg-gray overflow-hidden d-inline-flex align-items-center justify-content-center text-gray me-2">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="#" class="icon-35 rounded-circle bg-gray overflow-hidden d-inline-flex align-items-center justify-content-center text-gray">
+                            <a href="{{$global_setting->linkedin}}" class="icon-35 rounded-circle bg-gray overflow-hidden d-inline-flex align-items-center justify-content-center text-gray">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </div>
@@ -273,13 +273,13 @@
                             Information
                         </div>
                         <small class="text mb-10 d-block">
-                            223 Thatcher Road St, Brookly, Manhattan, NY 10463, United States
+                            {{$global_setting->website_full_address}}
                         </small>
                         <small class="text mb-10 d-block">
-                            +031 5689 89 98
+                            {{$global_setting->phone}}
                         </small>
                         <small class="text d-block">
-                            contact@Mokyshasolution.co
+                            {{$global_setting->site_email}}
                         </small>
                     </div>
                 </div>
@@ -289,37 +289,42 @@
                             Useful Links
                         </div>
                         <ul>
+                           
                             <li>
-                                <a href="home-software-company.html"> Home </a>
+                                <a href="/about-us"> About Mokysha </a>
                             </li>
                             <li>
-                                <a href="page-about-5.html"> About Mokysha </a>
+                                <a href="/career"> Projects </a>
                             </li>
                             <li>
-                                <a href="page-portfolio-5.html"> Projects </a>
+                                <a href="/services"> Services </a>
                             </li>
                             <li>
-                                <a href="page-about-5.html"> How It Works </a>
+                                <a href="/blogs"> Blog </a>
                             </li>
                             <li>
-                                <a href="page-blog-5.html"> Blog </a>
-                            </li>
-                            <li>
-                                <a href="page-contact-5.html"> Contact </a>
+                                <a href="/contact"> Contact </a>
                             </li>
                         </ul>
                     </div>
                 </div>
+                @php
+                    $carrers = App\Models\Navigation::query()->where('page_type','Carrers Menu')->where('nav_name', 'LIKE', "%career%")->first();
+                    $all_services = $carrers->childs()->first()->childs()->latest()->get()->take(5);
+
+                @endphp
                 <div class="col-lg-2">
                     <div class="items">
                         <div class="title">
                             Services
                         </div>
                         <ul>
-                            <li>
-                                <a href="page-services-5.html"> It Consultation </a>
-                            </li>
-                            <li>
+                            @foreach ($all_services as $item)
+                                <li>
+                                    <a href="/career"> {{$item->caption}} </a>
+                                </li>                                
+                            @endforeach
+                            {{-- <li>
                                 <a href="page-services-5.html"> Software Development </a>
                             </li>
                             <li>
@@ -330,7 +335,7 @@
                             </li>
                             <li>
                                 <a href="page-services-5.html"> Cloud Services </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </div>
                 </div>

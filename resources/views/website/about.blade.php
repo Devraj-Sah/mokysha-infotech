@@ -1,3 +1,14 @@
+@php
+    use Carbon\Carbon;
+    $blogs = App\Models\Navigation::query()->where('page_type','blogs')->orderBy('updated_at', 'desc')->latest()->get()->take(4);
+
+    $childs  = $slug_detail->childs()->get();
+    $about_mokysha = $childs->first();
+    $journey_part = $childs->slice(1)->first();
+    $trustedby = $childs->slice(2)->first();
+    $about_gallery = $childs->slice(3)->first();
+@endphp
+
 @extends('layouts.master')
 @push('title')
     About
@@ -5,13 +16,6 @@
 
 @section('content')
     
-@php
-    $childs  = $slug_detail->childs()->get();
-    $about_mokysha = $childs->first();
-    $journey_part = $childs->slice(1)->first();
-    $trustedby = $childs->slice(2)->first();
-    $about_gallery = $childs->slice(3)->first();
-@endphp
 {{-- <pre>
     {{$trustedby}}
 </pre> --}}
@@ -182,93 +186,73 @@
                 <div class="content section-padding">
                     <div class="section-head text-center mb-70 style-5">
                         <h2 class="mb-20"> News & <span> Insights </span> </h2>
-                        <p>More than 15,000 companies trust and choose Itech</p>
+                        <p>More than 15,000 companies trust and choose Mokysha</p>
                     </div>
                     <div class="blog-content">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="main-post wow fadeInUp">
                                     <div class="img img-cover">
-                                        <img src="/website/assets/img/blog/18.jpg" alt="">
-                                        <div class="tags">
+                                        <img src="{{$blogs[0]->banner_image}}" alt="">
+                                        {{-- <div class="tags">
                                             <a href="#"> Analysis </a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="info pt-30">
                                         <div class="date-author">
                                             <a href="#" class="date">
-                                                Nov 21, 2022 
+                                                @php
+                                                    $formattedDate = Carbon::parse($blogs[0]->updated_at)->format('M d, Y');
+                                                @endphp
+                                                {{$formattedDate}}
                                             </a>
                                             <span class="color-999 mx-3"> | </span>
                                             <a href="#" class="author color-999">
-                                                By <span class="color-000 fw-bold"> Admin </span>
+                                                By <span class="color-000 fw-bold">  {{ $blogs[0]->icon_image_caption ?? "Admin" }} </span>
+                                               
                                             </a>
                                         </div>
                                         <h4 class="title">
-                                            <a href="#"> Create Live Segments & Target The Right People For Your Amazing Team. </a>
+                                            <a href="/blogs/{{$blogs[0]->nav_name}}"> {{$blogs[0]->caption}}</a>
                                         </h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="side-posts">
-                                    <div class="item wow fadeInUp">
-                                        <div class="img img-cover">
-                                            <img src="/website/assets/img/blog/19.jpg" alt="">
-                                        </div>
-                                        <div class="info">
-                                            <div class="date-author">
-                                                <a href="#" class="date">
-                                                    Nov 21, 2022 
-                                                </a>
-                                                <span class="color-999 mx-3"> | </span>
-                                                <a href="#" class="author color-999">
-                                                    By <span class="color-000 fw-bold"> Admin </span>
-                                                </a>
+                                    @php
+                                        $delay = 0;
+                                    @endphp
+                                    @foreach ($blogs as $item)
+                                        @if ($loop->iteration == 1 )
+                                            @continue
+                                        @endif
+                                        @php
+                                            $delay += 0.2;
+                                        @endphp
+                                        <div class="item wow fadeInUp" @if($loop->iteration != 2) data-wow-delay="{{$delay}}s" @endif >
+                                            <div class="img img-cover">
+                                                <img src="{{$item->banner_image}}" alt="">
                                             </div>
-                                            <h4 class="title">
-                                                <a href="#"> Best unlocked me an striking perceive. </a>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div class="item wow fadeInUp" data-wow-delay="0.2s">
-                                        <div class="img img-cover">
-                                            <img src="/website/assets/img/blog/20.jpg" alt="">
-                                        </div>
-                                        <div class="info">
-                                            <div class="date-author">
-                                                <a href="#" class="date">
-                                                    Nov 21, 2022 
-                                                </a>
-                                                <span class="color-999 mx-3"> | </span>
-                                                <a href="#" class="author color-999">
-                                                    By <span class="color-000 fw-bold"> Admin </span>
-                                                </a>
+                                            <div class="info">
+                                                <div class="date-author">
+                                                    <a href="#" class="date">
+                                                    @php
+                                                        $formattedDate = Carbon::parse($item->updated_at)->format('M d, Y');
+                                                    @endphp
+                                                    {{$formattedDate}}
+                                                    </a>
+                                                    <span class="color-999 mx-3"> | </span>
+                                                    <a href="#" class="author color-999">
+                                                        By <span class="color-000 fw-bold">{{ $item->icon_image_caption ?? "Admin" }}  </span>
+                                                    </a>
+                                                </div>
+                                                <h4 class="title">
+                                                    <a href="/blogs/{{$item->nav_name}}"> {{$item->caption}} </a>
+                                                </h4>
                                             </div>
-                                            <h4 class="title">
-                                                <a href="#"> Me in resolution pianoforte continuing we. </a>
-                                            </h4>
                                         </div>
-                                    </div>
-                                    <div class="item wow fadeInUp" data-wow-delay="0.4s">
-                                        <div class="img img-cover">
-                                            <img src="/website/assets/img/blog/21.jpg" alt="">
-                                        </div>
-                                        <div class="info">
-                                            <div class="date-author">
-                                                <a href="#" class="date">
-                                                    Nov 21, 2022 
-                                                </a>
-                                                <span class="color-999 mx-3"> | </span>
-                                                <a href="#" class="author color-999">
-                                                    By <span class="color-000 fw-bold"> Admin </span>
-                                                </a>
-                                            </div>
-                                            <h4 class="title">
-                                                <a href="#"> Most my no spot felt by no he in forfeited. </a>
-                                            </h4>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

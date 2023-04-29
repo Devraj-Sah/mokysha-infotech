@@ -143,7 +143,7 @@ Route::get('/jobapply', [ContactController::class, 'inquiry'])->name('jobapply')
 
 
 Route::get('/contact', [ContactController::class, 'Contact'])->name('contact');
-Route::get('/apply', [ContactController::class, 'Contact'])->name('contact');
+// Route::get('/apply', [ContactController::class, 'Contact'])->name('contact');
 
 
 

@@ -4,6 +4,10 @@ $blogs = App\Models\Navigation::query()->where('page_type','blogs')->orderBy('up
 
 $faqs = App\Models\Navigation::query()->where('page_type','Group')->where('nav_name', 'LIKE', "%faqs%")->latest()->first();
 $all_faqs = $faqs->childs()->get();
+
+
+$clients = App\Models\Navigation::query()->where('page_type','Photo Gallery')->where('nav_name', 'LIKE', "%trusted-clients%")->latest()->first();
+
 @endphp
 <!-- ====== start blog ====== -->
         <section class="blog section-padding style-3" data-scroll-index="7">
@@ -143,107 +147,48 @@ $all_faqs = $faqs->childs()->get();
                                 <h3>FAQS</h3>
                             </div>
                             <div class="accordion" id="accordionExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="heading1">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse1" aria-expanded="true"
-                                            aria-controls="collapse1">
-                                            How Benefit That I Got When Choose Basic Plan?
-                                        </button>
-                                    </h2>
-                                    <div id="collapse1" class="accordion-collapse collapse show"
-                                        aria-labelledby="heading1" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            Through the collaboration with customers in discussing needs and demand,
-                                            we're able to attain mutual understanding, gain customer trust to offer
-                                            appropriate advice
+                                @foreach ($all_faqs as $item)
+
+                                    <div class="accordion-item @if($loop->last) border-0 @endif">
+                                        <h2 class="accordion-header" id="faq{{$item->id}}">
+                                            <button class="accordion-button @if($loop->iteration != 1) collapsed @endif " type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapse{{$item->id}}" aria-expanded="@if($loop->iteration == 1) true @else false @endif"
+                                                aria-controls="collapse{{$item->id}}">
+                                                {{$item->short_content}}
+                                            </button>
+                                        </h2>
+                                        <div id="collapse{{$item->id}}" class="accordion-collapse collapse @if($loop->iteration == 1) show @endif "
+                                            aria-labelledby="faq{{$item->id}}" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                               {{$item->long_content}}
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="heading2">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapse2"
-                                            aria-expanded="false" aria-controls="collapse2">
-                                            Can I Pay With Paypal or Payoneer?
-                                        </button>
-                                    </h2>
-                                    <div id="collapse2" class="accordion-collapse collapse"
-                                        aria-labelledby="heading2" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            Through the collaboration with customers in discussing needs and demand,
-                                            we're able to attain mutual understanding, gain customer trust to offer
-                                            appropriate advice
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="heading3">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapse3"
-                                            aria-expanded="false" aria-controls="collapse3">
-                                            How Long For A Standard Project
-                                        </button>
-                                    </h2>
-                                    <div id="collapse3" class="accordion-collapse collapse"
-                                        aria-labelledby="heading3" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            Through the collaboration with customers in discussing needs and demand,
-                                            we're able to attain mutual understanding, gain customer trust to offer
-                                            appropriate advice
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="heading4">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapse4"
-                                            aria-expanded="false" aria-controls="collapse4">
-                                            How About Data Security & NDA Agreement
-                                        </button>
-                                    </h2>
-                                    <div id="collapse4" class="accordion-collapse collapse"
-                                        aria-labelledby="heading4" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            Through the collaboration with customers in discussing needs and demand,
-                                            we're able to attain mutual understanding, gain customer trust to offer
-                                            appropriate advice
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item border-0">
-                                    <h2 class="accordion-header" id="heading5">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapse5"
-                                            aria-expanded="false" aria-controls="collapse5">
-                                            Can We Make An Own Tailored-AI ?
-                                        </button>
-                                    </h2>
-                                    <div id="collapse5" class="accordion-collapse collapse"
-                                        aria-labelledby="heading5" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            Through the collaboration with customers in discussing needs and demand,
-                                            we're able to attain mutual understanding, gain customer trust to offer
-                                            appropriate advice
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="page-contact-5.html" class="text-muted text-uppercase mt-50 small">
+                                    </div> 
+
+                                @endforeach
+                                {{-- <a href="page-contact-5.html" class="text-muted text-uppercase mt-50 small">
                                     See More 
                                     <i class="bi bi-chevron-right ms-1"></i>
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="client-logos mt-100">
                     <div class="row align-items-center">
-                        <div class="col-6 col-lg-2">
-                            <a href="#" class="img d-block">
-                                <img src="/website/assets/img/logos/1.png" alt="">
-                            </a>
-                        </div>
-                        <div class="col-6 col-lg-2">
+                        @foreach ($clients->navigationitems as $items)
+                            
+                            <div class="col-6 col-lg-2">
+                                <a href="#" class="img d-block">
+                                    <img src="{{asset('uploads/photo_gallery/'.$items->file)}}" alt="">
+                                </a>
+                            </div>
+                            
+                            @if ($loop->iteration == 6)
+                                @break;
+                            @endif
+                        @endforeach
+                        {{-- <div class="col-6 col-lg-2">
                             <a href="#" class="img d-block">
                                 <img src="/website/assets/img/logos/2.png" alt="">
                             </a>
@@ -267,7 +212,7 @@ $all_faqs = $faqs->childs()->get();
                             <a href="#" class="img d-block">
                                 <img src="/website/assets/img/logos/6.png" alt="">
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

@@ -30,7 +30,7 @@
                     {{-- <pre>{{$all_services->childs->first()->childs->first()}}</pre> --}}
                     <p> We have an experienced team of production and inspection personnel to ensure quality. </p>
                 </div>
-                <div class="controls">
+                <div class="controls"  id="here">
                     <button type="button" class="control" data-filter="all">All</button>
                     @foreach ($all_services->childs as $services)
                         <button type="button" class="control" data-filter=".{{$services->nav_name}}">{{$services->caption}}</button>
@@ -40,6 +40,9 @@
                 <section class="portfolio style-1">
                     <div class="content">
                         <div class="row mix-container">
+                            @php
+                                $count_services = 0;
+                            @endphp
                             @foreach ($all_services->childs as $services)
                              {{-- cat -> {{$loop->iteration}} / {{$services->childs}}<br> --}}
                                 
@@ -59,23 +62,26 @@
                                                     {!! str_limit(strip_tags($service->long_content), 80, '...') !!}
                                                 </div>
                                                 <div class="tags">
-                                                    <a href="#">Consultation</a>
-                                                    <a href="#">Management</a>
+                                                    <a href="#">{{$services->caption}}</a>
+                                                    {{-- <a href="#">Management</a> --}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                
+                                    @php
+                                        $count_services += 1;
+                                    @endphp
                                 @endforeach
                             @endforeach
 
                         </div>
                     </div>
                     <div class="text-center">
-                        <a href="page-portfolio-5.html" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold mt-30">
-                            <span> Load More (24) </span>
+                        <a href="#" id="click" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold mt-30">
+                            <span> Load More ({{$count_services}}) </span>
                         </a>
                     </div>
+                   
                 </section>
             
             </div>
@@ -88,23 +94,23 @@
                             <h2>Access your business potentials today & find opportunity for 
                                 <span>
                                     bigger success 
-                                    <img src="assets/img/header/head5_line.png" alt="" class="head-line">
-                                    <img src="assets/img/header/head5_pen.png" alt="" class="head-pen">         
+                                    <img src="/website/assets/img/header/head5_line.png" alt="" class="head-line">
+                                    <img src="/website/assets/img/header/head5_pen.png" alt="" class="head-pen">         
                                 </span>
                             </h2>
                             <div class="butns mt-70">
-                                <a href="page-contact-5.html" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold mx-1">
+                                <a href="{{ route('contact') }}" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold mx-1">
                                     <span> Start A Project Now </span>
                                 </a>
-                                <a href="page-about-5.html" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold mx-1">
+                                {{-- <a href="page-about-5.html" class="btn rounded-pill blue5-3Dbutn hover-blue2 sm-butn fw-bold mx-1">
                                     <span> See Pricing & Plan </span>
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <img src="assets/img/contact_globe.svg" alt="" class="contact_globe">
+            {{-- <img src="/website/assets/img/contact_globe.svg" alt="" class="contact_globe"> --}}
         </section>
         <!-- ====== end portfolio-projects ====== -->
 
@@ -120,6 +126,16 @@
     var containerEl = document.querySelector('.mix-container');
 
     var mixer = mixitup(containerEl);
+</script>
+<script>
+    $(document).ready(function() {
+        $('#click').on('click', function() {
+            $('[data-filter="all"]').click();
+            $('html, body').animate({
+                scrollTop: $('#here').offset().top
+                }, 10);
+        });
+        });
 </script>
 @endsection
 

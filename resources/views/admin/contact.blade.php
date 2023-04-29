@@ -80,8 +80,8 @@
                         </form>
                     </div>
                 </div>
-                <img src="assets/img/icons/contact_a.png" alt="" class="contact_a">
-                <img src="assets/img/icons/contact_message.png" alt="" class="contact_message">
+                <img src="/website/assets/img/icons/contact_a.png" alt="" class="contact_a">
+                <img src="/website/assets/img/icons/contact_message.png" alt="" class="contact_message">
             </div>
         </div>
     </section>

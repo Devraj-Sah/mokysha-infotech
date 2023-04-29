@@ -1,7 +1,7 @@
 
   <!-- /.content-wrapper -->
   <footer class="main-footer text-center">
-    <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | News Portal | powered by <a href="https://radiantnepal.com" target="_blank">Radiant InfoTech Nepal</a></strong>
+    <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Mokysha Infotech | powered by <a href="https://www.facebook.com/devraj.2024/" target="_blank">@Devraj</a></strong>
   </footer>
   
   <div class="control-sidebar-bg"></div>
