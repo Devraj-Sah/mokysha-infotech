@@ -33,17 +33,17 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group mb-20">
-                                        <input type="text" name="name" class="form-control" placeholder="Name"> 
+                                        <input type="text" name="name" class="form-control" placeholder="Name *" required> 
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group mb-20">
-                                        <input type="text" name="email" class="form-control" placeholder="Email Address *" required>
+                                        <input type="email" name="email" class="form-control" placeholder="Email Address *" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group mb-20">
-                                        <input type="text" name="number" class="form-control"  placeholder="Phone Number *">
+                                        <input type="text" name="number" class="form-control"  placeholder="Phone Number *" required> 
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -62,7 +62,7 @@
                                 </div> --}}
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <textarea rows="10" name="message" class="form-control" placeholder="How can we help you?"></textarea>
+                                        <textarea rows="10" name="message" class="form-control" placeholder="How can we help you?" required></textarea>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 text-center">

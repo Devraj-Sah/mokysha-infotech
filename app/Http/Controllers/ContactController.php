@@ -90,8 +90,8 @@ class ContactController extends Controller
     
     public function ContactStore(Request $req){
         $validated = $req->validate([
-            'name' => 'required',
-            'number' => 'required',
+            'message' => 'required',
+            'email' => 'required',
          ]);
 
          if($req->file('file')){
@@ -115,8 +115,13 @@ class ContactController extends Controller
         $contact->country = $req['country'];
         $contact->save();
         if($contact){
-            Session::flash('contact', 'Thanks for submitting'); 
-            return redirect('/contact');
+            if(isset($req['con'])){
+                Session::flash('contact', 'We will Contact you very Soon !'); 
+                return redirect('/');
+            }
+            else
+                Session::flash('contact', 'Thanks for submitting'); 
+                return redirect('/contact');
         }
         else{
             Session::flash('contact_error', 'Sorry form submitted failed'); 

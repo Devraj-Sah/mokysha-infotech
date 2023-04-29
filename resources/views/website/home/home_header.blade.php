@@ -16,30 +16,34 @@
                             product design, QA & consultancy services.</p>
                         <h5 class="h5">Get Free Quote! <span class="fw-normal ms-1">We’ll contact back in 24h</span>
                         </h5>
-                        <form action="contact.php" class="form mt-30" method="post">
+                        <form action="{{ route('contactstore') }}" class="form mt-30" method="post">
                             <div class="row gx-3">
-                                <div class="col-6">
-                                    <div class="form-group input-with-icon">
-                                        <input type="text" class="form-control" placeholder="Your Email *">
-                                        <span class="input-icon">
-                                            <i class="far fa-envelope"></i>
-                                        </span>
+                                    @csrf
+                                    <div class="col-6">
+                                        <div class="form-group input-with-icon">
+                                            <input type="email" name="email" class="form-control" placeholder="Your Email *" required>
+                                            <span class="input-icon">
+                                                <i class="far fa-envelope"></i>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <select class="form-select">
-                                            <option value="" selected>Your inquiry about</option>
-                                            <option value="">Your inquiry about</option>
-                                            <option value="">Your inquiry about</option>
-                                        </select>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            {{-- <select class="form-select">
+                                                <option value="" selected>Your inquiry about</option>
+                                                <option value="">Your inquiry about</option>
+                                                <option value="">Your inquiry about</option>
+                                            </select> --}}
+                                            <input type="text" name="message" class="form-control" placeholder="Your inquiry about *" required>
+                                            <input type="hidden" value="Requesting a Consultation" name="name" class="form-control">
+                                            <input type="hidden" value="1" name="con" class="form-control">
+                                        </div>
+                                    </div>  
+                                    <div class="col-12">
+                                        <button type="submit" class="btn dark-butn hover-darkBlue rounded-pill w-100 mt-3">
+                                            <span>Request A Consultation</span>
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn dark-butn hover-darkBlue rounded-pill w-100 mt-3">
-                                        <span>Request A Consultation</span>
-                                    </button>
-                                </div>
                             </div>
                         </form>
                     </div>
