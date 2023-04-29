@@ -1,53 +1,64 @@
-        <!-- ====== start blog ====== -->
+@php
+use Carbon\Carbon;
+$blogs = App\Models\Navigation::query()->where('page_type','blogs')->orderBy('updated_at', 'desc')->latest()->get()->take(3);
+
+$faqs = App\Models\Navigation::query()->where('page_type','Group')->where('nav_name', 'LIKE', "%faqs%")->latest()->first();
+$all_faqs = $faqs->childs()->get();
+@endphp
+<!-- ====== start blog ====== -->
         <section class="blog section-padding style-3" data-scroll-index="7">
             <div class="container">
                 <div class="row gx-0 justify-content-between">
                     <div class="col-lg-5">
                         <div class="blog-content">
                             <div class="section-head style-3 d-flex align-items-center mb-50">
-                                <h3>Mokysha’s <span>Journal</span></h3> <a href="page-blog-5.html" class="text-muted ms-5 ps-5 mt-2">All
+                                <h3>Mokysha’s <span>Journal</span></h3> <a href="/blogs" class="text-muted ms-5 ps-5 mt-2">All
                                     Articles <i class="bi bi-chevron-right ms-1"></i></a>
                             </div>
-                            <div class="card border-0 bg-transparent rounded-0 border-bottom brd-gray pb-4 mb-4">
-                                <div class="row align-items-center">
-                                    <div class="col-lg-4">
-                                        <a href="page-single-post-5.html" class="img img-cover">
-                                            <img src="/website/assets/img/blog/6.png" class="radius-2" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <div class="card-body p-0">
-                                            <small class="d-block date text">
-                                                <a href="#"
-                                                    class="text-uppercase border-end brd-light pe-3 me-3 color-blue2 fw-bold">tips
-                                                    & tricks</a>
-                                                <i class="bi bi-clock me-1"></i>
-                                                <a href="#" class="op-8">12 Days ago</a>
-                                            </small>
-                                            <h6 class="card-title"><a href="page-single-post-5.html">How To Become A Python Develop Expert</a></h6>
-                                            <div
-                                                class="d-flex small mt-20 align-items-center justify-content-between op-9">
-                                                <div class="l_side d-flex align-items-center">
-                                                    <span
-                                                        class="icon-10 rounded-circle d-inline-flex justify-content-center align-items-center text-uppercase bg-blue2 p-2 me-2 text-white">
-                                                        a
-                                                    </span>
-                                                    <a href="#">
-                                                        <small class="text-muted">By</small> Admin
-                                                    </a>
-                                                </div>
-                                                <div class="r-side mt-1">
-                                                    <i class="bi bi-chat-left-text me-1"></i>
-                                                    <a href="#">24</a>
-                                                    <i class="bi bi-eye ms-4 me-1"></i>
-                                                    <a href="#">774k</a>
+                            @foreach ($blogs as $blog)
+                                <div class="card border-0 bg-transparent rounded-0 @if ($loop->last) pb-4 mb-4 pb-lg-0 mb-lg-0 @else border-bottom brd-gray pb-4 mb-4 @endif">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-4">
+                                            <a href="/blogs/{{$blog->nav_name}}" class="img img-cover">
+                                                <img src="{{$blog->banner_image}}" class="radius-2" alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <div class="card-body p-0">
+                                                <small class="d-block date text">
+                                                    {{-- <a href="#"
+                                                        class="text-uppercase border-end brd-light pe-3 me-3 color-blue2 fw-bold">tips
+                                                        & tricks</a> --}}
+                                                    <i class="bi bi-clock me-1"></i>
+                                                    @php 
+                                                        $updated_at = Carbon::parse($blog->updated_at);
+                                                    @endphp
+                                                    <a href="#" class="op-8">{{$updated_at->diffForHumans()}}</a>
+                                                </small>
+                                                <h6 class="card-title"><a href="/blogs/{{$blog->nav_name}}">{{$blog->caption}}</a></h6>
+                                                <div
+                                                    class="d-flex small mt-20 align-items-center justify-content-between op-9">
+                                                    <div class="l_side d-flex align-items-center">
+                                                        <span class="icon-10 rounded-circle d-inline-flex justify-content-center align-items-center text-uppercase bg-blue2 p-2 me-2 text-white">
+                                                            {{ str_limit($blog->icon_image_caption, 1, '') ?? "A" }} 
+                                                        </span>
+                                                        <a href="#">
+                                                            <small class="text-muted"> {{ $blog->icon_image_caption ?? "By Admin" }}</small> 
+                                                        </a>
+                                                    </div>
+                                                    {{-- <div class="r-side mt-1">
+                                                        <i class="bi bi-chat-left-text me-1"></i>
+                                                        <a href="#">24</a>
+                                                        <i class="bi bi-eye ms-4 me-1"></i>
+                                                        <a href="#">774k</a>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="card border-0 bg-transparent rounded-0 border-bottom brd-gray pb-4 mb-4">
+                                </div>                                
+                            @endforeach
+                            {{-- <div class="card border-0 bg-transparent rounded-0 border-bottom brd-gray pb-4 mb-4">
                                 <div class="row align-items-center">
                                     <div class="col-lg-4">
                                         <a href="page-single-post-5.html" class="img img-cover">
@@ -123,7 +134,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="col-lg-5">
