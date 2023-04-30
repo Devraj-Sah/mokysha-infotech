@@ -11,8 +11,8 @@ $mokysha_technology = App\Models\Navigation::query()->where('page_type','normal'
                     @foreach ($home_aboutus->navigationitems as $item)
                         <div class="info-circle">
                             <div class="cont">
-                                <h2>{{$item->name}}</h2>
-                                <small>{{$item->content}}</small>
+                                <h2>{{$item->name ?? ""}}</h2>
+                                <small>{{$item->content ?? ""}}</small>
                             </div>
                         </div>
                     @endforeach
@@ -43,10 +43,10 @@ $mokysha_technology = App\Models\Navigation::query()->where('page_type','normal'
                                     <h3>Mokysha’s <span>Mission & Vision</span></h3>
                                 </div>
                                 <h5 class="h5">
-                                    {{$home_aboutus->short_content}}
+                                    {{$home_aboutus->short_content ?? ""}}
                                 </h5>
                                 <div class="text mb-20">
-                                   {!! $home_aboutus->long_content !!}
+                                   {!! $home_aboutus->long_content ?? "" !!}
                                 </div>
                                 <a href="/about-us" class="btn rounded-pill bg-blue2 sm-butn text-white">
                                     <span>More About Us</span>
@@ -65,9 +65,9 @@ $mokysha_technology = App\Models\Navigation::query()->where('page_type','normal'
                                     <h3>Mokysha’s <span>Technology</span></h3>
                                 </div>
                                 <div class="text mb-30">
-                                   {{$mokysha_technology->short_content}}
+                                   {{$mokysha_technology->short_content ?? ""}}
                                 </div>
-                               {!! $mokysha_technology->long_content !!}
+                               {!! $mokysha_technology->long_content ?? "" !!}
                                 <a href="/about-us" class="btn rounded-pill border-blue2 hover-blue2 mt-60 sm-butn">
                                     <span>How We Works</span>
                                 </a>
@@ -76,7 +76,7 @@ $mokysha_technology = App\Models\Navigation::query()->where('page_type','normal'
                     </div>
                 </div>
                 <div class="img img-right">
-                    <img src="{{$mokysha_technology->banner_image}}" alt="">
+                    <img src="{{$mokysha_technology->banner_image ?? ""}}" alt="">
                 </div>
             </div>
         </section>
