@@ -1,12 +1,13 @@
 @php
     // use Carbon\Carbon;
     // $helper = new \App\Helpers\FrontendHelper();
-    $carrers = App\Models\Navigation::query()->where('page_type','Carrers Menu')->where('nav_name', 'LIKE', "%career%")->first();
-    $all_services = $carrers->childs()->first()->childs()->get();
+    // $carrers = App\Models\Navigation::query()->where('page_type','Carrers Menu')->where('nav_name', 'LIKE', "%career%")->first();
+    // $all_services = $carrers->childs()->first()->childs()->get();
 
     $childs  = $slug_detail->childs()->get();
 
     $our_services = $childs->first();
+    $all_services = $childs->first()->childs()->get();
     $our_top_services = $childs->slice(1)->first();
     $optimized_user = $childs->slice(2)->first();
     $payment = $childs->slice(3)->first();
@@ -64,7 +65,7 @@
                     @foreach ($all_services as $item)
                         
                         <div class="col-lg-3">
-                            <a href="/career" class="features-card mb-30 style-5">
+                            <a href="{{route('project')}}" class="features-card mb-30 style-5">
                                 <div class="icon">
                                     <img src="{{$item->banner_image ?? ""}}" alt="">
                                 </div>
@@ -74,7 +75,7 @@
                                     </h5>
                                     <p class="text">
                                     {{-- {{$item->long_content ?? ""}} --}}
-                                    {!! str_limit(strip_tags($item->long_content), 100, ' [...]') !!}
+                                    {!! str_limit(strip_tags($item->long_content ?? ""), 100, ' [...]') !!}
                                     </p>
                                 </div>
                             </a>

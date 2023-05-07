@@ -133,6 +133,10 @@ Route::get('/pdf/{dataslug}', [HomeController::class, 'pdf_details'])->name('pdf
 // search
 Route::any('/search', [HomeController::class, 'search'])->name('search');
 
+// search
+Route::any('/projects', [HomeController::class, 'project'])->name('project');
+
+
 
 // Team_details
 

@@ -65,7 +65,7 @@
                                     <th>Number</th>
                                     <th>Email</th>
                                     <th>Message</th>
-                                    {{-- <th>Resumes</th> --}}
+                                    <th>Resumes</th>
                                     <th>Website address</th>
                                     {{-- <th>country</th> --}}
                                     {{-- <th>job detail </th> --}}
@@ -82,7 +82,11 @@
                                         <td>{{ $contact->number ?? '' }}</td>
                                         <td>{{ $contact->email ?? '' }}</td>
                                         <td>{{ $contact->message ?? '' }}</td>
-                                        {{-- <td><a href="{{$contact->file ?? '#'}}"><button type="button" class="btn btn-danger btn-sm">View</button></td> --}}
+                                        @if (isset($contact->file))
+                                        <td><a href="{{$contact->file ?? '#'}}"><button type="button" class="btn btn-danger btn-sm">View</button></td>
+                                        @else
+                                        <td><span class="badge secondary-badge">No File Found</span></td>                                            
+                                        @endif
                                         <td>{{ $contact->apply_for ?? '' }}</td>
                                         {{-- <td>{{$contact->country ?? ''}}</td> --}}
                                         {{-- <td>{{$contact->job_id}}</td><!----job deytail--> --}}
