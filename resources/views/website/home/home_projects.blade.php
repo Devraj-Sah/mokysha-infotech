@@ -1,5 +1,5 @@
 @php
-$carrers = App\Models\Navigation::query()->where('page_type','Carrers Menu')->where('nav_name', 'LIKE', "%career%")->latest()->first();
+$carrers = App\Models\Navigation::query()->where('page_type','Service Menu')->where('nav_name', 'LIKE', "%services%")->latest()->first();
 $all_services = $carrers->childs()->first()->childs()->get();
 @endphp
 <!-- ====== start projects  ====== -->

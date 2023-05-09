@@ -1,6 +1,7 @@
  @php
-    $carrers = App\Models\Navigation::query()->where('page_type','Carrers Menu')->where('nav_name', 'LIKE', "%career%")->first();
+    $carrers = App\Models\Navigation::query()->where('page_type','Service Menu')->where('nav_name', 'LIKE', "%services%")->first();
     $all_services = $carrers->childs()->first()->childs()->get()->take(4);
+    // dd($carrers);
  @endphp
  <!-- ====== start services ====== -->
         <section class="services style-3 section-padding pb-70" data-scroll-index="2">

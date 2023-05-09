@@ -294,7 +294,7 @@
                                 <a href="/about-us"> About Mokysha </a>
                             </li>
                             <li>
-                                <a href="/career"> Projects </a>
+                                <a href="/career"> Careers </a>
                             </li>
                             <li>
                                 <a href="/services"> Services </a>
@@ -309,7 +309,7 @@
                     </div>
                 </div>
                 @php
-                    $carrers = App\Models\Navigation::query()->where('page_type','Carrers Menu')->where('nav_name', 'LIKE', "%career%")->first();
+                    $carrers = App\Models\Navigation::query()->where('page_type','Service Menu')->where('nav_name', 'LIKE', "%services%")->first();
                     $all_services = $carrers->childs()->first()->childs()->latest()->get()->take(5);
 
                 @endphp
