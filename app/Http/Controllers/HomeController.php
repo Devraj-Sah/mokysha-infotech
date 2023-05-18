@@ -365,17 +365,16 @@ class HomeController extends Controller
         //
         if (Navigation::all()->where('nav_name', $submenu)->count() > 0) {
             $subcategory_id = Navigation::all()->where('nav_name', $submenu)->first()->id;
+            // return $slug_detail->page_type; 
             if (Navigation::all()->where('parent_page_id', $subcategory_id)->count() > 0) {
-                if ($slug_detail->page_type == 'career') {
-                    $subcategory_type = "career";
-                }
+               
                 if ($slug_detail->page_type == 'job') {
                     $subcategory_type = "job";
                 }
                 else{
                     $subcategory_type = Navigation::all()->where('parent_page_id', $subcategory_id)->first()->page_type; //slug/slug2(GROUP)
                 }
-            } else {
+            } else {                
                 //return Navigation::all()->where('nav_name',$submenu)->where('page_type','Normal')->first()->page_type;
                 if (Navigation::all()->where('nav_name', $submenu)->where('page_type', 'Normal')->count() > 0) {
                     $subcategory_type = Navigation::all()->where('nav_name', $submenu)->where('page_type', 'Normal')->first()->page_type; //slug/slug2(group)
@@ -404,6 +403,9 @@ class HomeController extends Controller
         } else {
             // return "no passing";
             $subcategory_type = null;
+        }
+        if ($slug_detail->page_type == 'career') {
+            $subcategory_type = "career";
         }
         // return $subcategory_type;
         if ($subcategory_type == "Photo Gallery") {
@@ -438,7 +440,8 @@ class HomeController extends Controller
             return view("website.normal")->with(["partners" => $partners, 'message' => $message, 'normal' => $normal, 'jobs' => $jobs, 'menus' => $menus, 'sliders' => $sliders, 'about' => $About, 'global_setting' => $global_setting, 'slug_detail' => $slug_detail, 'normal_sub' => $normal_sub]);
             
             
-        } elseif ($subcategory_type == "career") {            
+        } elseif ($subcategory_type == "career") { 
+            // return "hi"     ;      
             return view("website.single_career")->with(["slug1" => $slug1,'menus' => $menus,'about' => $About, 'global_setting' => $global_setting, 'slug_detail' => $slug_detail]);          
             
         } elseif ($subcategory_type == "Group") {
