@@ -195,6 +195,10 @@
 
     @yield('content')
 
+<!-- Start of HubSpot Embed Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/39837298.js"></script>
+  <!-- End of HubSpot Embed Code -->
+
     {{-- <footer>
         <div class="upper-footer">
             <div class="container">
