@@ -66,7 +66,7 @@ $all_services = $carrers->childs()->first()->childs()->get();
                         </div> --}}
                     </div>
                     <div class="text-center">
-                        <a href="/career" class="btn rounded-pill bg-blue2 sm-butn mt-60 text-white">
+                        <a href="/projects" class="btn rounded-pill bg-blue2 sm-butn mt-60 text-white">
                             <span>See All Projects</span>
                         </a>
                     </div>

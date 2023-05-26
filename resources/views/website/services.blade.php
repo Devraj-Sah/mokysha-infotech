@@ -74,8 +74,8 @@
                                         {{$item->caption ?? ""}}
                                     </h5>
                                     <p class="text">
-                                    {{-- {{$item->long_content ?? ""}} --}}
-                                    {!! str_limit(strip_tags($item->long_content ?? ""), 100, ' [...]') !!}
+                                    {{$item->long_content ?? ""}}
+                                    {{-- {!! str_limit(strip_tags($item->long_content ?? ""), 100, '') !!} --}}
                                     </p>
                                 </div>
                             </a>

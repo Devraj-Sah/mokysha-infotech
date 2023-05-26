@@ -1,6 +1,6 @@
 @php
 $home_aboutus = App\Models\Navigation::query()->where('page_type','Photo Gallery')->where('nav_name', 'LIKE', "%home-mission%")->first();
-$mokysha_technology = App\Models\Navigation::query()->where('page_type','normal')->where('nav_name', 'LIKE', "%mokysha-technology%")->first();
+$mokysha_technology = App\Models\Navigation::query()->where('page_type','normal')->where('nav_name', 'LIKE', "%mokysha-technology%")->orwhere('nav_name', 'LIKE', "%mokysha-infotech%")->first();
 // dd($home_aboutus)
 @endphp
         <!-- ====== start about us ====== -->
@@ -11,7 +11,7 @@ $mokysha_technology = App\Models\Navigation::query()->where('page_type','normal'
                     @foreach ($home_aboutus->navigationitems as $item)
                         <div class="info-circle">
                             <div class="cont">
-                                <h2>{{$item->name ?? ""}}</h2>
+                                <h2>{{$item->name ?? ""}}{{$item->name_nepali ?? ""}}</h2>
                                 <small>{{$item->content ?? ""}}</small>
                             </div>
                         </div>
@@ -62,7 +62,7 @@ $mokysha_technology = App\Models\Navigation::query()->where('page_type','normal'
                         <div class="col-lg-5">
                             <div class="info pe-lg-5">
                                 <div class="section-head mb-40 style-3">
-                                    <h3>Mokysha’s <span>Technology</span></h3>
+                                    <h3>Mokysha’s <span>Infotech</span></h3>
                                 </div>
                                 <div class="text mb-30">
                                    {{$mokysha_technology->short_content ?? ""}}

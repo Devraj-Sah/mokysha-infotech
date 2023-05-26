@@ -7,32 +7,39 @@
                 <div class="section-head long-shape style-3 text-center mb-70">
                     <h3>Meet Our <span>Amazing Team</span></h3>
                 </div>
-                <div class="content">
-                    @foreach ($teams as $item)                        
-                        <div class="team_box">
-                            <div class="avatar">
-                                <img src="{{$item->banner_image}}" alt="">
-                            </div>
-                            <div class="info">
-                                <h6><a href="#">{{$item->caption}}</a></h6>
-                                <small>{{$item->short_content}}</small>
-                                <div class="social_icons">
-                                    <a href="{{$item->extra_two}}">
-                                        <i class="fab fa-twitter"></i>
-                                    </a>
-                                    <a href="{{$item->extra_one}}">
-                                        <i class="fab fa-facebook-f"></i>
-                                    </a>
-                                    <a href="{{$item->extra_three}}">
-                                        <i class="fab fa-linkedin-in"></i>
-                                    </a>
-                                    {{-- <a href="#">
-                                        <i class="fab fa-github"></i>
-                                    </a> --}}
+                    <div class="testimonial-slider style-3">
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                @foreach ($teams as $item) 
+                                <div class="swiper-slide" style="width: auto; margin-right:0px">                       
+                                    <div class="team_box">
+                                        <div class="avatar">
+                                            <img src="{{$item->banner_image}}" alt="">
+                                        </div>
+                                        <div class="info" style="width: 135px;">
+                                            <h6><a href="#">{{$item->caption}}</a></h6>
+                                            <small>{{$item->short_content}}</small>
+                                            <div class="social_icons">
+                                                <a href="{{$item->extra_two}}">
+                                                    <i class="fab fa-twitter"></i>
+                                                </a>
+                                                <a href="{{$item->extra_one}}">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </a>
+                                                <a href="{{$item->extra_three}}">
+                                                    <i class="fab fa-linkedin-in"></i>
+                                                </a>
+                                                {{-- <a href="#">
+                                                    <i class="fab fa-github"></i>
+                                                </a> --}}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                @endforeach
                             </div>
                         </div>
-                    @endforeach
+                    </div>
                     {{-- <div class="team_box">
                         <div class="avatar">
                             <img src="/website/assets/img/team/2.jpeg" alt="">
@@ -114,7 +121,6 @@
                         </div>
                     </div> --}}
                     
-                </div>
                 {{-- <div class="bttns mt-4 text-center mt-50">
                     <a href="page-about-5.html" class="btn rounded-pill bg-blue2 sm-butn mx-1 text-white">
                         <span>See All Team</span>

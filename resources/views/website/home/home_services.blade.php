@@ -23,7 +23,7 @@
                                         {{-- {{$item->long_content ?? ""}} --}}
                                         {!! str_limit(strip_tags($item->long_content), 80, '...') !!}
                                     </div>
-                                    <a href="/career">
+                                    <a href="/projects">
                                         <span>see projects</span> <i class="bi bi-chevron-right ms-1"></i>
                                     </a>
                                 </div>

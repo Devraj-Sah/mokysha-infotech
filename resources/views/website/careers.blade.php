@@ -260,7 +260,7 @@
         <!-- ====== end career form ====== --> --}}
         
         <!-- ====== start careers-features ====== -->
-        <section class="careers-features pb-70">
+        {{-- <section class="careers-features pb-70">
             <div class="container">
                 <div class="content">
                     <div class="row">
@@ -311,7 +311,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- ====== end careers-features ====== -->
 
     </main>

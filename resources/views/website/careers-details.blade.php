@@ -70,14 +70,13 @@
 
 
         <!-- ====== start careers positions ====== -->
-        <section class="careers-positions">
+        {{-- <section class="careers-positions">
             <div class="container">
                 <div class="content section-padding border-1 border-top brd-gray">
                     <div class="section-head mb-60 style-5">
                         <h2 class="mb-20"> Opening <span> Positions </span> </h2>
-                        {{-- <div class="text color-666">More than 15,000 companies trust and choose Itech</div> --}}
                     </div>
-                    <div class="careers-positions-slider5">
+                    <div class="@if(count($all_services->childs) < 3) careers-positions-slider @else careers-positions-slider5 @endif  ">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
                                 @foreach ($all_services->childs as $item)                        
@@ -87,53 +86,11 @@
                                         <p> {!! $item->short_content ?? "We’re looking for a mid-level product designer to join our team" !!} </p>
                                         <div class="time">
                                             <span class="me-4"> <i class="fal fa-clock me-1 color-main"></i> {{$item->icon_image_caption}} </span>
-                                            {{-- <span> <i class="fal fa-dollar-sign me-1 color-main"></i> 10k - $20k </span> --}}
                                         </div>
                                         <span class="trend-mark"> <i class="fas fa-bolt"></i> </span>
                                     </a>
                                 </div>
                             @endforeach
-                                {{-- <div class="swiper-slide">
-                                    <a href="#" class="position-card mb-4">
-                                        <h5> Product Designer </h5>
-                                        <p> We’re looking for a mid-level product designer to join our team </p>
-                                        <div class="time">
-                                            <span class="me-4"> <i class="fal fa-clock me-1 color-main"></i> Full-time </span>
-                                            <span> <i class="fal fa-dollar-sign me-1 color-main"></i> 10k - $20k </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="#" class="position-card mb-4">
-                                        <h5> Wesite Developer </h5>
-                                        <p> We’re looking for a Senior Website Developer to join our team </p>
-                                        <div class="time">
-                                            <span class="me-4"> <i class="fal fa-clock me-1 color-main"></i> Full-time </span>
-                                            <span> <i class="fal fa-dollar-sign me-1 color-main"></i> 10k - $20k </span>
-                                        </div>
-                                        <span class="trend-mark"> <i class="fas fa-bolt"></i> </span>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="#" class="position-card mb-4">
-                                        <h5> Game Developer </h5>
-                                        <p> We’re looking for a rockstar Pro Game Developer to join our team </p>
-                                        <div class="time">
-                                            <span class="me-4"> <i class="fal fa-clock me-1 color-main"></i> Full-time </span>
-                                            <span> <i class="fal fa-dollar-sign me-1 color-main"></i> 10k - $20k </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="#" class="position-card mb-4 mb-lg-0">
-                                        <h5> UI & UX Designer </h5>
-                                        <p> We’re looking for a Super Kicks Junior UI & UX Designer to join our team </p>
-                                        <div class="time">
-                                            <span class="me-4"> <i class="fal fa-clock me-1 color-main"></i> Full-time </span>
-                                            <span> <i class="fal fa-dollar-sign me-1 color-main"></i> 10k - $20k </span>
-                                        </div>
-                                    </a>
-                                </div> --}}
                             </div>
                         </div>
                         <div class="swiper-button-next"></div>
@@ -142,7 +99,7 @@
                 </div>
 
             </div>
-        </section>
+        </section> --}}
         <!-- ====== end careers positions ====== -->
 
 
@@ -150,11 +107,11 @@
         <section class="career-form section-padding">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="form-numbers">
                             <h2> Looking For Oppertunity </h2>
-                            <p> More than 15,000 companies trust and choose Mokysha </p>
-                            <div class="career-numbers mt-50">
+                            <p>Apply for job from below section: </p>
+                            {{-- <div class="career-numbers mt-50">
                                 <div class="row gx-5">
                                     <div class="col-5">
                                         <div class="mum-card">
@@ -181,11 +138,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </div> --}}
+                        {{-- </div>
                     </div>
-                    <div class="col-lg-6">
-                        <form action="{{ route('contactstore') }}" method="post" enctype='multipart/form-data' class="form">
+                    <div class="col-lg-6"> --}}
+                        <form action="{{ route('contactstore') }}" method="post" enctype='multipart/form-data' class="form  mt-50">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6">

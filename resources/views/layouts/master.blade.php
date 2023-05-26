@@ -349,7 +349,8 @@
                     </div>
                     <div class="col-lg-6">
                         <small class="small">
-                            © 2022 Copyrights by <a href="#" class="fw-bold text-decoration-underline">Mokysha Co.</a> All Rights Reserved. Designed by <a href="#" class="fw-bold text-decoration-underline">@Mokysha</a>
+                            © 2022 Copyrights by <a href="#" class="fw-bold text-decoration-underline">Mokysha Infotech.</a> All Rights Reserved. 
+                            {{-- Designed by <a href="#" class="fw-bold text-decoration-underline">@Mokysha</a> --}}
                         </small>
                     </div>
                 </div>
