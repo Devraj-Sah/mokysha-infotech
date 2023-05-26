@@ -14,19 +14,19 @@
                                 <div class="swiper-slide" style="width: auto; margin-right:0px">                       
                                     <div class="team_box">
                                         <div class="avatar">
-                                            <img src="{{$item->banner_image}}" alt="">
+                                            <img src="{{$item->banner_image ?? "" }}" alt="">
                                         </div>
                                         <div class="info" style="width: 135px;">
-                                            <h6><a href="#">{{$item->caption}}</a></h6>
-                                            <small>{{$item->short_content}}</small>
+                                            <h6><a href="#">{!! $item->caption ?? "" !!}</a></h6>
+                                            <small>{!! $item->short_content ?? "" !!}</small>
                                             <div class="social_icons">
-                                                <a href="{{$item->extra_two}}">
+                                                <a href="{{$item->extra_two ?? "" }}">
                                                     <i class="fab fa-twitter"></i>
                                                 </a>
-                                                <a href="{{$item->extra_one}}">
+                                                <a href="{{$item->extra_one ?? "" }}">
                                                     <i class="fab fa-facebook-f"></i>
                                                 </a>
-                                                <a href="{{$item->extra_three}}">
+                                                <a href="{{$item->extra_three ?? "" }}">
                                                     <i class="fab fa-linkedin-in"></i>
                                                 </a>
                                                 {{-- <a href="#">
