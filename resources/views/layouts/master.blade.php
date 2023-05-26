@@ -366,7 +366,7 @@
 
 
     <!-- ====== start to top button ====== -->
-    <a href="#" class="to_top bg-gray rounded-circle icon-40 d-inline-flex align-items-center justify-content-center">
+    <a href="#" style=" right: 100px;" class="to_top bg-gray rounded-circle icon-40 d-inline-flex align-items-center justify-content-center">
         <i class="bi bi-chevron-up fs-6 text-dark"></i>
     </a>
 
